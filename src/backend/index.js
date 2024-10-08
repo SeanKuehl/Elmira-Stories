@@ -1,17 +1,21 @@
 // Code  for mongoose config in backend
 // Filename - backend/index.js
-
+require('dotenv').config()
 
 //const { GetObjectCommand, S3Client } = require('@aws-sdk/client-s3');
-var aws = require('aws-sdk');
+//var aws = require('aws-sdk');
+//remove this from packages list. It is now depracted and no longer used
 
 
-aws.config.setPromisesDependency(); //use so you can promisify to get the actual images
-            aws.config.update({
-                accessKeyId: "",
-                secretAccessKey: "",
-                region: ''
-            });
+const {
+    getSignedUrl,
+} = require("@aws-sdk/s3-request-presigner");
+
+const {
+    GetObjectCommand,
+    S3,
+} = require("@aws-sdk/client-s3");
+
 
 
 
@@ -28,7 +32,7 @@ mongoose.connect('mongodb://localhost:27017/', {
   .catch((error) => {
     console.log(error);
   });
- 
+
 // Schema for users of app
 const MemorialTreeSchema = new mongoose.Schema({
     tree_ID: {
@@ -113,10 +117,19 @@ app.post("/register_new_memorial_tree", async (req, resp) => {
 
 app.get('/get_tree_image/:imageName', async (req, res) => {
 
-    const s3 = new aws.S3();
+    const s3 = new S3({
+        credentials: {
+            accessKeyId: process.env.ACCESS_KEY,
+            secretAccessKey: process.env.SECRET_KEY,
+        },
+        
+        region: process.env.AWS_REGION,
+    });
 
-    var params = {Bucket: '', Key: req.params.imageName};
-    var promise = s3.getSignedUrlPromise('getObject', params);
+    var params = {Bucket: process.env.BUCKET_NAME, Key: req.params.imageName};
+    var promise = getSignedUrl(s3, new GetObjectCommand(params), {
+        expiresIn: 3600,
+    });
     promise.then(function(url) {
         res.send(url)
     }, function(err) { console.log(err) });
