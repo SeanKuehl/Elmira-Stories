@@ -1,10 +1,5 @@
-// Code  for mongoose config in backend
-// Filename - backend/index.js
-require('dotenv').config()
 
-//const { GetObjectCommand, S3Client } = require('@aws-sdk/client-s3');
-//var aws = require('aws-sdk');
-//remove this from packages list. It is now depracted and no longer used
+require('dotenv').config()
 
 
 const {
@@ -17,11 +12,17 @@ const {
 } = require("@aws-sdk/client-s3");
 
 
-
+const helmet = require("helmet");
+const compression = require("compression");
+const RateLimit = require("express-rate-limit");
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 20,
+});
 
 // To connect with your mongoDB database
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/', {
+mongoose.connect(process.env.MONGO_URI, {
     dbName: 'ElmiraStories-DB',
 }) 
   .then((res) => {
@@ -31,7 +32,7 @@ mongoose.connect('mongodb://localhost:27017/', {
     console.log(error);
   });
 
-// Schema for users of app
+//schema for memorial trees. This is also used for memorial benches as well
 const MemorialTreeSchema = new mongoose.Schema({
     memorial_ID: {
         type: String,
@@ -77,8 +78,18 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 console.log("App listen at port 5000");
+app.use(compression()); // Compress all routes
+app.use(helmet());
+app.use(limiter);
 app.use(express.json());
-app.use(cors());    //I will need to set this to my domain for product, otherwise others could potentially access my API which is a huge security risk!
+app.use(cors({
+    
+    origin: process.env.FRONT_END_ORIGIN,    //will need to set this to the domain of the web app in production
+    methods: ['GET', 'POST', ],
+    credentials: true, //Credentials are cookies, authorization headers or TLS client certificates.
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'device-remember-token', 'Access-Control-Allow-Origin', 'Origin', 'Accept']
+}));    
 
 function isEmpty(value){
     if (value !== "" && value !== " " && value != null && value != undefined) {
@@ -154,7 +165,8 @@ app.get('/get_trees_by_search_term/:searchTerm', async (req, res) => {
     //check if the search term is empty/null. If this is the case, return all
     //if the search term isn't empty, search with it and return results
 
-    if (req.params.searchTerm !== "" && req.params.searchTerm != " " && req.params.searchTerm != null && req.params.searchTerm != undefined){
+    //this is the 'super secret' key that means the user didn't enter anything and we should return all entries
+    if (req.params.searchTerm !== "Dan Kuso The GOAT"){
         //search with it
         const results = await Tree.find({
             $or: [  //search the following fields non-exclusively

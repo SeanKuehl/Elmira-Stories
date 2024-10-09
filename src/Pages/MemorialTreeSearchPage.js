@@ -72,11 +72,19 @@ function MemorialTreeSearchPage() {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    let localSearchTerm = searchTerm;
+
+    //check for the search term being empty, as a truly empty string "" will cause a problem on the backend
+    
+    if (localSearchTerm.length === 0){
+      localSearchTerm = "Dan Kuso The GOAT";  //this is the 'super secret' key for the backend to return all results
+    }
+    
     
     let result = await fetch(
       //note: the {} is javascript tells it to interperet something as javascript and not string.
       //if used here, it works as intended. If used above, it creates problems
-    'http://localhost:5000/get_trees_by_search_term/'+searchTerm, {
+    'http://localhost:5000/get_trees_by_search_term/'+localSearchTerm, {
         method: "get",
         
         headers: {
