@@ -14,8 +14,10 @@ function UniversalHeader() {
         <h1> Elmira Stories </h1>
       </div>
       
-      <div className="Navbar">
-        <Link className="NavLink" to="/">Home</Link>
+      <div className="NavBar">
+        <Link to="/"><button className="NavLink">Home</button></Link>
+
+        <Link to="/memorialtrees"><button className="NavLink">Memorial Trees</button></Link>
       </div>
 
       

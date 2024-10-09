@@ -5,7 +5,13 @@ import './index.css';
 
 
 import HomePage from './Pages/HomePage'
+import MemorialTreeMainPage from './Pages/MemorialTreeMainPage'
+import MemorialTreeSearchPage from './Pages/MemorialTreeSearchPage';
 import UniversalPageHeader from './Components/UniversalHeader'
+
+
+//don't deploy with this!
+//import AddMemorialTree from './Pages/AddMemorialTree'
 
 
 import reportWebVitals from './reportWebVitals';
@@ -19,12 +25,15 @@ the asterisk means it's a catch all, like a default case in a switch statement
 */
 
 
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<UniversalPageHeader />}>
           <Route index element={<HomePage />} />
+          <Route path="memorialtrees" element={<MemorialTreeMainPage />} />
+          <Route path="memorialtrees/search" element={<MemorialTreeSearchPage />} />
           
         </Route>
       </Routes>

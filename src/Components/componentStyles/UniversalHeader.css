@@ -4,3 +4,27 @@
   text-align: center;
   
 }
+
+
+.NavBar {
+  width: 100%;
+  background-color: dodgerblue;
+  
+}
+
+
+
+.NavLink {
+  height: 100%; /* this is so it takes up the whole height of the navbar */
+  text-decoration: none;
+  color: white;
+  background-color: dodgerblue;
+  border: none;
+  font-size: 2em;
+  padding-inline: 2vw;
+  
+}
+
+.NavLink:hover {
+  background-color: darkblue;
+}

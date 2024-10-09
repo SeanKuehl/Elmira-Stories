@@ -22,9 +22,7 @@ const {
 // To connect with your mongoDB database
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/', {
-    dbName: 'yourDB-name',
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+    dbName: 'ElmiraStories-DB',
 }) 
   .then((res) => {
     console.log("Database connected");
@@ -35,7 +33,7 @@ mongoose.connect('mongodb://localhost:27017/', {
 
 // Schema for users of app
 const MemorialTreeSchema = new mongoose.Schema({
-    tree_ID: {
+    memorial_ID: {
         type: String,
         required: true,
         unique: true,
@@ -53,16 +51,20 @@ const MemorialTreeSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    approximate_lattitude: {
-        type: String,   //float is not supported by Number, so just make it string
+    approximate_location: {
+        type: String,   //this will be longitude and latitude
         required: true,
     },
-    approximate_longitude: {
-        type: String,
+    side_of_trail: {
+        type: String,   //this will be either left or right or N/A if it's a special situation
         required: true,
+    },
+    additional_description: {
+        type: String,   //if there is something special of note or a story associated with the tree, otherwise N/A
+        
     },
     tree_image: {
-        type: String,   //for now, this will be a local image path
+        type: String,   
         required: true,
     }
 
@@ -76,7 +78,17 @@ const app = express();
 const cors = require("cors");
 console.log("App listen at port 5000");
 app.use(express.json());
-app.use(cors());
+app.use(cors());    //I will need to set this to my domain for product, otherwise others could potentially access my API which is a huge security risk!
+
+function isEmpty(value){
+    if (value !== "" && value !== " " && value != null && value != undefined) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 app.get("/", (req, resp) => {
 
     resp.send("App is Working");
@@ -89,15 +101,15 @@ app.get("/", (req, resp) => {
 
 app.post("/register_new_memorial_tree", async (req, resp) => {
     try {
-        //approximateLongitude, approximateLattitude, image
-        console.log(req.body);
+        
         const new_tree = new Tree({
-            tree_ID: req.body.treeId,
+            memorial_ID: req.body.memorialId,
             dedicated_to: req.body.dedicatedTo,
-            dedicated_by: req.body.dedicatedBy,
+            dedicated_by: isEmpty(req.body.dedicatedBy) ? "Lions Club of Elmira": req.body.dedicatedBy,
             //date added has a good default, so no real need to pass it here
-            approximate_lattitude: req.body.approximateLongitude,
-            approximate_longitude: req.body.approximateLattitude,
+            approximate_location: req.body.approximateLocation,
+            side_of_trail: isEmpty(req.body.sideOfTrail) ? "N/A": req.body.sideOfTrail,
+            additional_description: isEmpty(req.body.additionalDescription) ? "N/A": req.body.additionalDescription,
             tree_image: req.body.image,
         });
         let result = await new_tree.save();
@@ -116,7 +128,7 @@ app.post("/register_new_memorial_tree", async (req, resp) => {
 
 
 app.get('/get_tree_image/:imageName', async (req, res) => {
-
+    
     const s3 = new S3({
         credentials: {
             accessKeyId: process.env.ACCESS_KEY,
@@ -131,8 +143,38 @@ app.get('/get_tree_image/:imageName', async (req, res) => {
         expiresIn: 3600,
     });
     promise.then(function(url) {
+        
         res.send(url)
+        
     }, function(err) { console.log(err) });
+});
+
+
+app.get('/get_trees_by_search_term/:searchTerm', async (req, res) => {
+    //check if the search term is empty/null. If this is the case, return all
+    //if the search term isn't empty, search with it and return results
+
+    if (req.params.searchTerm !== "" && req.params.searchTerm != " " && req.params.searchTerm != null && req.params.searchTerm != undefined){
+        //search with it
+        const results = await Tree.find({
+            $or: [  //search the following fields non-exclusively
+                {dedicated_to: { "$regex": req.params.searchTerm, "$options": "i" }},  //this will search the field for entries that contain the search term
+                {dedicated_by: { "$regex": req.params.searchTerm, "$options": "i" }},
+                {additional_description: { "$regex": req.params.searchTerm, "$options": "i" }}
+            ]
+        }).sort()
+        
+        res.send(results);
+    }
+    else {
+        //search all
+        const results = await Tree.find({})
+
+        res.send(results);
+    }
+        
+
+
 });
 
 
