@@ -7,6 +7,13 @@ import './index.css';
 import HomePage from './Pages/HomePage'
 import MemorialTreeMainPage from './Pages/MemorialTreeMainPage'
 import MemorialTreeSearchPage from './Pages/MemorialTreeSearchPage';
+import ContactPage from './Pages/ContactPage'
+import StoriesMainPage from './Pages/StoriesPage'
+
+//stories
+import BandStandStory from './Stories/BandStand'
+import CarlKlinckStory from './Stories/CarlKlinck'
+
 import UniversalPageHeader from './Components/UniversalHeader'
 
 
@@ -34,6 +41,12 @@ export default function App() {
           <Route index element={<HomePage />} />
           <Route path="memorialtrees" element={<MemorialTreeMainPage />} />
           <Route path="memorialtrees/search" element={<MemorialTreeSearchPage />} />
+          <Route path="contact" element={<ContactPage />} />
+
+          <Route path="stories" element={<StoriesMainPage />} />
+
+          <Route path="stories/bandstand" element={<BandStandStory />} />
+          <Route path="stories/carlklinck" element={<CarlKlinckStory />} />
           
         </Route>
       </Routes>

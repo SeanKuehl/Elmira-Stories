@@ -1,0 +1,18 @@
+
+
+
+.StoryLink {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    font-size: 1.4em;
+}
+
+.StoryLink:hover {
+    text-decoration: underline blue;
+    font-size: 1.5em;
+}
+
+
+
+

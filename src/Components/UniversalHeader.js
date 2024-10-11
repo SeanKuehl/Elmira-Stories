@@ -18,6 +18,11 @@ function UniversalHeader() {
         <Link to="/"><button className="NavLink">Home</button></Link>
 
         <Link to="/memorialtrees"><button className="NavLink">Memorial Trees</button></Link>
+
+        <Link to="/stories"><button className="NavLink">Stories</button></Link>
+
+        <Link to="/contact"><button className="NavLink">Contact</button></Link>
+
       </div>
 
       
