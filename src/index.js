@@ -38,7 +38,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<UniversalPageHeader />}>
-          <Route index element={<AddMemorialTree />} />
+          <Route index element={<HomePage />} />
           <Route path="memorialtrees" element={<MemorialTreeMainPage />} />
           <Route path="memorialtrees/search" element={<MemorialTreeSearchPage />} />
           <Route path="contact" element={<ContactPage />} />

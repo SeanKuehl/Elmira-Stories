@@ -1,8 +1,49 @@
-
+/* at about 670px width, we should use a hamburger menu instead */
 
 .HeaderDiv {
   text-align: center;
   
+}
+
+.MobileNavBar {
+  display: none;
+}
+
+.MobileHamburgerMenuButton {
+  display: none;
+}
+
+.MobileHamburgerButtonDiv {
+  display: none;
+}
+
+/* If the device screen is 670px or smaller, we do something different 
+670px is the manually-determined value where the standard navbar becomes unwieldly*/
+@media only screen and (max-width: 670px) {
+  .NavBar {
+    display: none;
+  }
+
+  .MobileHamburgerMenuButton {
+    display: block;
+    background-color: lightblue;
+    padding: 5vw;
+    margin: auto;
+  }
+
+  
+  .MobileHamburgerButtonDiv {
+    width: 100%;
+    background-color: dodgerblue;
+    display: block;
+  }
+
+  .MobileNavBar {
+    
+    flex-direction: column;
+    background-color: dodgerblue;
+  }
+
 }
 
 
@@ -10,6 +51,11 @@
   width: 100%;
   background-color: dodgerblue;
   
+}
+
+
+.MobileNavBar {
+  display: none;
 }
 
 

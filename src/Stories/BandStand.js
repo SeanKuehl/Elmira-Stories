@@ -4,8 +4,10 @@
 
 
 import { Link } from "react-router-dom";
-import './StoriesStyles/BandStand.css'
+
+import './StoriesStyles/GeneralStoryStyle.css'
 import bandStandImage from './StoriesAssets/GoreParkBandStand.jpg'
+
 
 
 function BandStand() {
@@ -19,19 +21,22 @@ function BandStand() {
 
             <h2> The Amazing Gore Park Bandstand </h2>
 
-            <img src={bandStandImage} alt="An image of the Gore Park bandstand" width="500vw" height="500vh"/>
+            <img src={bandStandImage} alt="The Gore Park bandstand" width="200vw" height="200vh"/>
 
             <h4>The Very First Bandstand</h4>
 
-            <p>Many people walk or drive past Elmira’s Gore Park and it’s bandstand on a daily basis, but might not know the rich history behind it. 
+            <p className="ArticleParagraph">Many people walk or drive past Elmira’s Gore Park and it’s bandstand on a daily basis, but might not know the rich history behind it. 
                 Records show that the Gore park bandstand wasn't always where it is today. It was originally located behind a 
                 hotel on a corner of Church and Arthur street and was built in 1892. The hotel would later burn down in 1898 and the bandstand was 
                 moved to Gore park shortly after. 
             </p>
 
+            <br></br>
+            <br></br>
+
             <h4>Second Bandstand</h4>
 
-            <p>
+            <p className="ArticleParagraph">
             By 1912 the bandstand was in need of repair and Abraham Martin Bowman, a local man who had only moved to Elmira the year before won the bid 
             to rebuild it based on a design by the Elmira Musical Society. Abraham M. Bowman was an old order menonite and tradesperson who setup a 
             contracting and building materials business shortly after moving to Elmira. The bandstand was the heart of the community and was where the 
@@ -39,19 +44,24 @@ function BandStand() {
             fight in the First World War just two years after it was built.
             </p>
 
+            <br></br>
+            <br></br>
+
             <h4>Abraham Martin Bowman</h4>
 
-            <p>
+            <p className="ArticleParagraph">
             Abraham Bowman’s ties to Elmira don’t just end there, though. He would also go on to obtain contracts to dig and install parts of the local water
             system which would lead him to work for the Elmira Water Works and Elmira Public Utility where he later became superintendent and then manager 
             of the utility.  Abraham and his wife, Catherine would go on to purchase their first car in 1937 and Abraham would become qualified as a 
             professional engineer for both electrical and water in 1938 even though his prior school education ended at grade 8.
             </p>
 
+            <br></br>
+            <br></br>
 
             <h4>Third Bandstand and Modern Day</h4>
 
-            <p>
+            <p className="ArticleParagraph">
             Many years later in 1986 the historic bandstand was in need of repairs once again. The work would only be completed two years later in 1988 
             and the bandstand was now a designated heritage structure. This is the version of the bandstand that sits in Gore park to this day. Much has 
             changed since the very first bandstand in Elmira, but in some ways nothing has. The modern day band stand is still a venue for gatherings, 
@@ -62,6 +72,7 @@ function BandStand() {
             <br></br>
             <br></br>
 
+            <div>
             <h4>Sources</h4>
 
             <p>History of the bandstand: <a href="https://www.observerxtra.com/and-the-band-played-on/">And The Band Played On, The Observer</a></p>
@@ -70,6 +81,7 @@ function BandStand() {
             <br></br>
             <p>General Information on the bandstand: <a href="https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=10933">Gore Park Bandstnd, Canada's Historic Places</a></p>
             <br></br>
+            </div>
 
         </div>
     );

@@ -1,20 +1,3 @@
 
 
 
-.BackButton {
-    background-color: green;
-    color: white;
-    text-decoration: none;
-    padding: 5px;
-    
-}
-
-
-.BackButton:hover {
-    background-color: lightgreen;
-    color: black;
-}
-
-p {
-    text-align: left;
-}

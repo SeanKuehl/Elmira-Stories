@@ -6,6 +6,7 @@
 import { Outlet, Link } from "react-router-dom";
 import bandStandImage from '../Stories/StoriesAssets/GoreParkBandStand.jpg'
 import './PageStyles/StoriesPage.css'
+import './PageStyles/GeneralPageStyle.css'
 
 
 function StoriesPage() {
@@ -15,7 +16,7 @@ function StoriesPage() {
         <div>
             <h2> Stories </h2>
 
-            <p>On this page you can find links to articles about our local history and the amazing stories contained within.
+            <p className="CenteredPText">On this page you can find links to articles about our local history and the amazing stories contained within.
 
             </p>
             <br></br>
@@ -23,7 +24,9 @@ function StoriesPage() {
             <div>
             <Link to="/stories/bandstand" className="StoryLink">The Amazing Gore Park Bandstand</Link>
             <br></br>
-            <Link to="/stories/bandstand" className="StoryLink"><img src={bandStandImage} className="StoryIamge" width="200vw" height="200vh"/></Link>
+            <Link to="/stories/bandstand" className="StoryLink"><img src={bandStandImage} width="200vw" height="200vh"/></Link>
+            <br></br>
+            <br></br>
             <br></br>
             <br></br>
             </div>

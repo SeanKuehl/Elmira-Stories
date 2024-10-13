@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import './PageStyles/MemorialTreeSearchPage.css'
+import './PageStyles/GeneralPageStyle.css'
 
 
 function MemorialTreeSearchPage() {
@@ -107,7 +108,7 @@ function MemorialTreeSearchPage() {
   return (
     <div>
       <h2> Memorial Tree Search </h2>
-      <p className="ExplanationText">If you would like to search for a memorial tree outside of Elmira, please visit <a href="http://www.lfcmemorialforest.org/">here</a>.
+      <p className="CenteredPText">If you would like to search for a memorial tree outside of Elmira, please visit <a href="http://www.lfcmemorialforest.org/">here</a>.
         The previous link has lots of information on memorial trees and some from Elmira.
         This link, however, only has 14 entries for memorial trees in Elmira as of October 2024
         when in fact there are hundreds. This is the reason for this project. We are working to

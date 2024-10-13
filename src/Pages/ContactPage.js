@@ -2,6 +2,7 @@
 
 
 import './PageStyles/ContactPage.css'
+import './PageStyles/GeneralPageStyle.css'
 
 
 
@@ -11,16 +12,19 @@ function ContactPage() {
     
 
     return (
-        <div>
+        <div className="ContentDiv">
             <h2> Contact </h2>
 
-            <p> For general questions, article recommendations and reporting technical issues please see below.</p>
+            <p className="CenteredPText"> For general questions, reporting problems and other reasons please see below.</p>
+            <br></br>
+            <br></br>
             
-            <div className="ContactDiv">
+            <div>
             
-                <p>By Email at: <a href="mailto:seanliamkuehl@gmail.com">seanliamkuehl@gmail.com</a></p>
+                <p className="CenteredPText">By Email at: <a href="mailto:seanliamkuehl@gmail.com">seanliamkuehl@gmail.com</a></p>
                 <br></br>
-                <p>By Phone at: 519.722.3874</p>
+                <br></br>
+                <p className="CenteredPText">By Phone at: 519.722.3874</p>
             
             </div>
             

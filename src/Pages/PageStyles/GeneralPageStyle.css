@@ -1,0 +1,29 @@
+
+
+
+.CenteredPText {
+  margin: auto;
+  width: 80%;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/*
+this class is for larger amounts of text that look better left centered
+*/
+.LeftPText {
+  margin: auto;
+  width: 80%;
+  font-size: 1.2em;
+  text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
