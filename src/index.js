@@ -18,7 +18,7 @@ import UniversalPageHeader from './Components/UniversalHeader'
 
 
 //don't deploy with this!
-//import AddMemorialTree from './Pages/AddMemorialTree'
+import AddMemorialTree from './Pages/AddMemorialTree'
 
 
 import reportWebVitals from './reportWebVitals';
@@ -38,7 +38,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<UniversalPageHeader />}>
-          <Route index element={<HomePage />} />
+          <Route index element={<AddMemorialTree />} />
           <Route path="memorialtrees" element={<MemorialTreeMainPage />} />
           <Route path="memorialtrees/search" element={<MemorialTreeSearchPage />} />
           <Route path="contact" element={<ContactPage />} />

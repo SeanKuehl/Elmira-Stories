@@ -71,6 +71,7 @@ td {
   border-right: dotted 1px;
   border-left: dotted 1px;
   border-bottom: double 2px;
+  max-width: 15vw;
 }
 
 

@@ -15,7 +15,7 @@ function BandStand() {
         <div>
             <br></br>
 
-            <Link to="/stories"><buton className="BackButton">Back To Stories</buton></Link>
+            <Link to="/stories"><button className="BackButton">Back To Stories</button></Link>
 
             <h2> The Amazing Gore Park Bandstand </h2>
 

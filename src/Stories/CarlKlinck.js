@@ -15,7 +15,7 @@ function CarlKlinck() {
         <div>
             <br></br>
 
-            <Link to="/stories"><buton className="BackButton">Back To Stories</buton></Link>
+            <Link to="/stories"><button className="BackButton">Back To Stories</button></Link>
 
             <h2> Carl Frederick Klinck </h2>
 

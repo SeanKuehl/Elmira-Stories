@@ -17,7 +17,7 @@ function MemorialTreeSearchPage() {
     "Approximate Location": "This is the longitude and lattitude that the memorial is located near. If you wish to visit the memorial in person, this will give you a good place to start looking.",
     "Side of Trail": "This is the side of the trail the memorial is located on. This is usually either 'Right' or 'Left', but may be different if there are special circumstances surrouding the memorial's location.",
     "Additional Description": "If there is something special or notable about the memorial, it will be mentioned here. For example, a short biography of the person the memorial is dedicated to.",
-    "Tree Image": "This button will take you to the most recent picture taken of the memorial."
+    "Memorial Image": "This button will take you to the most recent picture taken of the memorial."
   }
   
 
@@ -56,7 +56,7 @@ function MemorialTreeSearchPage() {
   const fetchImage = async (imageFileName) => {
 
     
-    const res = await fetch('http://localhost:5000/get_tree_image/'+imageFileName, {  
+    const res = await fetch('http://localhost:5000/get_memorial_image/'+imageFileName, {  
       method: "get",
         
         headers: {
@@ -84,7 +84,7 @@ function MemorialTreeSearchPage() {
     let result = await fetch(
       //note: the {} is javascript tells it to interperet something as javascript and not string.
       //if used here, it works as intended. If used above, it creates problems
-    'http://localhost:5000/get_trees_by_search_term/'+localSearchTerm, {
+    'http://localhost:5000/get_memorial_by_search_term/'+localSearchTerm, {
         method: "get",
         
         headers: {
@@ -153,7 +153,7 @@ function MemorialTreeSearchPage() {
                     <th>Additional Description <button className="HelpButton" onMouseEnter={() => {helpButtonMouseEnter("Additional Description")}}
                           onMouseLeave={() => {helpButtonMouseLeave()}}>?</button></th>
 
-                    <th>Tree Image <button className="HelpButton" onMouseEnter={() => {helpButtonMouseEnter("Tree Image")}}
+                    <th>Memorial Image <button className="HelpButton" onMouseEnter={() => {helpButtonMouseEnter("Memorial Image")}}
                           onMouseLeave={() => {helpButtonMouseLeave()}}>?</button></th>
                   </tr>
                 </thead>
@@ -167,7 +167,7 @@ function MemorialTreeSearchPage() {
                     <td>{x.approximate_location}</td>
                     <td>{x.side_of_trail}</td>
                     <td>{x.additional_description}</td>
-                    <td><button onClick={() => {fetchImage(x.tree_image)}} className="ViewImageButton">View Image</button></td>
+                    <td><button onClick={() => {fetchImage(x.memorial_image)}} className="ViewImageButton">View Image</button></td>
                     </tr>
                 ))}
                 </tbody>

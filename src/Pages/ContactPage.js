@@ -17,11 +17,11 @@ function ContactPage() {
             <p> For general questions, article recommendations and reporting technical issues please see below.</p>
             
             <div className="ContactDiv">
-            <ul>
-                <li>By Email at: <a href="mailto:seanliamkuehl@gmail.com">seanliamkuehl@gmail.com</a></li>
+            
+                <p>By Email at: <a href="mailto:seanliamkuehl@gmail.com">seanliamkuehl@gmail.com</a></p>
                 <br></br>
-                <li>By Phone at: 519.722.3874</li>
-            </ul>
+                <p>By Phone at: 519.722.3874</p>
+            
             </div>
             
 

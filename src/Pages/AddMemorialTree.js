@@ -1,6 +1,6 @@
 
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 
 
@@ -18,28 +18,10 @@ function AddMemorialTree() {
     const [image, setImage] = useState("");
 
 
-    const [that, setThat] = useState("");
-
-    const fetchImage = async () => {
-        const res = await fetch('http://localhost:5000/get_tree_image/profile pic.jpg');
-        var body = await res.text();
-        
-        setThat(body);
-      };
-
-
-      useEffect(() => {
-        fetchImage();
-      }, []);
-
-
-    
-
-
     const handleOnSubmit = async (e) => {
         e.preventDefault();
         let result = await fetch(
-        'http://localhost:5000/register_new_memorial_tree', {
+        'http://localhost:5000/register_new_memorial', {
             method: "post",
             body: JSON.stringify({ memorialId, dedicatedTo, dedicatedBy, approximateLocation, sideOfTrail, additionalDescription,  image }),
             headers: {
@@ -82,7 +64,7 @@ function AddMemorialTree() {
                 <input type="text" placeholder="Additional Description" 
                 value={additionalDescription} onChange={(e) => setAdditionalDescription(e.target.value)} />
 
-                <input type="text" placeholder="Tree Image" 
+                <input type="text" placeholder="Memorial Image" 
                 value={image} onChange={(e) => setImage(e.target.value)} />
 
 
@@ -91,7 +73,7 @@ function AddMemorialTree() {
             </form>
 
 
-            <img src={that} />
+            
 
             
 
