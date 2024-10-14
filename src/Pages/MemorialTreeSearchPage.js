@@ -1,6 +1,6 @@
 
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './PageStyles/MemorialTreeSearchPage.css'
 import './PageStyles/GeneralPageStyle.css'
 
@@ -8,6 +8,11 @@ import './PageStyles/GeneralPageStyle.css'
 function MemorialTreeSearchPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [treeList, setTreeList] = useState([]);
+
+  const [pagedListStartIndex, setPagedListStartIndex] = useState(0);
+  const [realSliceSize, setRealSliceSize] = useState(0);
+  const [displayStartIndex, setDisplayStartIndex] = useState(0);
+  const pagedListSliceSize = 10;
 
   
 
@@ -20,6 +25,39 @@ function MemorialTreeSearchPage() {
     "Additional Description": "If there is something special or notable about the memorial, it will be mentioned here. For example, a short biography of the person the memorial is dedicated to.",
     "Memorial Image": "This button will take you to the most recent picture taken of the memorial."
   }
+
+
+  function IncrementPagesListIndex(){
+    if ((pagedListStartIndex + pagedListSliceSize) <= treeList.length){
+      setPagedListStartIndex(pagedListStartIndex + pagedListSliceSize);
+      setDisplayStartIndex(pagedListStartIndex + pagedListSliceSize + 1);
+
+      //if we can show the next ten elements after the new index
+      if ((pagedListStartIndex + (pagedListSliceSize+pagedListSliceSize)) <= treeList.length) {
+        
+        setRealSliceSize(pagedListStartIndex + (pagedListSliceSize+pagedListSliceSize));
+      }
+      //if there aren't 10 more elements left
+      else {
+        
+        setRealSliceSize(treeList.length);
+      }
+
+    }
+  }
+
+
+  function DecrementPagesListIndex(){
+    if ((pagedListStartIndex - pagedListSliceSize) >= 0){
+      setRealSliceSize(pagedListStartIndex);
+      setPagedListStartIndex(pagedListStartIndex - pagedListSliceSize);
+      setDisplayStartIndex(pagedListStartIndex - pagedListSliceSize + 1);
+      
+    }
+  }
+
+  
+  
   
 
   function helpButtonMouseEnter(buttonName){
@@ -102,6 +140,28 @@ function MemorialTreeSearchPage() {
     }
 }
 
+    useEffect(() => {
+      //this triggers whenever there's a render event. setState calls trigger render events
+
+        if (realSliceSize === 0 && treeList.length != 0){
+
+          if ((pagedListStartIndex + pagedListSliceSize) > treeList.length){
+            setRealSliceSize(treeList.length);
+            setDisplayStartIndex(1);
+          }
+          else {
+            setRealSliceSize(pagedListSliceSize);
+            setDisplayStartIndex(1);
+          }
+
+          
+          
+        }
+        
+        
+        
+    });
+
 
 
 
@@ -159,7 +219,7 @@ function MemorialTreeSearchPage() {
                   </tr>
                 </thead>
                 <tbody>
-                {treeList.map(x => (
+                {treeList.slice(pagedListStartIndex, realSliceSize).map(x => (
                   <tr>
                     <td>{x.memorial_ID}</td>
                     <td>{x.dedicated_to}</td>
@@ -169,10 +229,16 @@ function MemorialTreeSearchPage() {
                     <td>{x.side_of_trail}</td>
                     <td>{x.additional_description}</td>
                     <td><button onClick={() => {fetchImage(x.memorial_image)}} className="ViewImageButton">View Image</button></td>
-                    </tr>
-                ))}
+                  </tr>
+              ))}
                 </tbody>
               </table>
+
+              <div className="ListPageDiv">
+              
+              <p> <button className="PagedListButtons" onClick={() => {DecrementPagesListIndex()}}>&lt;</button> Showing {displayStartIndex} - {realSliceSize} of {treeList.length} memorial entries <button className="PagedListButtons" onClick={() => {IncrementPagesListIndex()}}>&gt;</button></p>
+              
+              </div>
 
 
 
