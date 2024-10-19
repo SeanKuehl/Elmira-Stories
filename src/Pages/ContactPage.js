@@ -4,7 +4,7 @@
 import './PageStyles/ContactPage.css'
 import './PageStyles/GeneralPageStyle.css'
 
-
+import Footer from '../Components/Footer'
 
 
 
@@ -20,13 +20,17 @@ function ContactPage() {
             <br></br>
             
             <div>
-            
-                <p className="CenteredPText">By Email at: <a href="mailto:seanliamkuehl@gmail.com">seanliamkuehl@gmail.com</a></p>
-                <br></br>
-                <br></br>
                 <p className="CenteredPText">By Phone at: 519.722.3874</p>
+                
+                <br></br>
+                <br></br>
+                <p className="CenteredPText">By Email at: <a href="mailto:seanliamkuehl@gmail.com">seanliamkuehl@gmail.com</a></p>
+                
+                
             
             </div>
+
+            <Footer></Footer>
             
 
         </div>

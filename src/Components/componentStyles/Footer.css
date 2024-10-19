@@ -1,0 +1,63 @@
+
+
+
+
+
+.FooterDiv {
+  width: 100%;
+  background-color: black;
+  margin-top: 25vh;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.DoubleDiv {
+  display: flex;
+  justify-content: center;
+  
+  margin-top: auto;
+}
+
+.Blessing {
+  color: white;
+  margin: auto;
+  
+  text-align: center;
+  
+  
+}
+
+.FooterLink {
+  text-decoration: none;
+  color: white;
+}
+
+
+.FooterLink:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+.ContactDiv {
+  color: white;
+  margin: auto;
+  text-align: center;
+  
+  
+}
+
+.SitemapDiv {
+  color: white;
+  margin: auto;
+  text-align: center;
+  
+}
+
+
+
+.CopyrightDiv {
+  color: grey;
+}

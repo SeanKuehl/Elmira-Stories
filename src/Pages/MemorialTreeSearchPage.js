@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import './PageStyles/MemorialTreeSearchPage.css'
 import './PageStyles/GeneralPageStyle.css'
 
+import Footer from '../Components/Footer'
+
 
 function MemorialTreeSearchPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -242,7 +244,7 @@ function MemorialTreeSearchPage() {
 
 
 
-
+              <Footer></Footer>
     </div>
   );
 }

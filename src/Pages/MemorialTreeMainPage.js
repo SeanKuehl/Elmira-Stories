@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import './PageStyles/GeneralPageStyle.css'
 
+import Footer from '../Components/Footer'
+
 function MemorialTreeSearchPage() {
   return (
     <div>
@@ -14,6 +16,9 @@ function MemorialTreeSearchPage() {
         runs alongside the Elmira golf course. To dedicate a tree or bench, please visit <a href="https://elmiralions.ca/elmira-memorial-forest/">here</a>.
         To search memorial trees, please visit <Link to="/memorialtrees/search">here</Link>.
       </p>
+
+      <Footer></Footer>
+
     </div>
   );
 }

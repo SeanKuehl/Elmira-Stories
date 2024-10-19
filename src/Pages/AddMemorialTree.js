@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-
+import Footer from '../Components/Footer'
 
 
 
@@ -76,9 +76,12 @@ function AddMemorialTree() {
             
 
             
-
+            <Footer></Footer>
 
         </>
+
+
+
     );
 }
 

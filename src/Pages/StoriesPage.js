@@ -8,12 +8,14 @@ import bandStandImage from '../Stories/StoriesAssets/GoreParkBandStand.jpg'
 import './PageStyles/StoriesPage.css'
 import './PageStyles/GeneralPageStyle.css'
 
+import Footer from '../Components/Footer'
+
 
 function StoriesPage() {
     
 
     return (
-        <div>
+        <div className="root">
             <h2> Stories </h2>
 
             <p className="CenteredPText">On this page you can find links to articles about our local history and the amazing stories contained within.
@@ -34,7 +36,13 @@ function StoriesPage() {
             <div>
             <Link to="/stories/carlklinck" className="StoryLink">Carl Frederick Klinck</Link>
             <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             </div>
+            
+            
+            <Footer></Footer>
             
 
         </div>
