@@ -5,7 +5,7 @@ import './index.css';
 
 
 import HomePage from './Pages/HomePage'
-import MemorialTreeMainPage from './Pages/MemorialTreeMainPage'
+
 import MemorialTreeSearchPage from './Pages/MemorialTreeSearchPage';
 import ContactPage from './Pages/ContactPage'
 import StoriesMainPage from './Pages/StoriesPage'
@@ -39,8 +39,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<UniversalPageHeader />}>
           <Route index element={<HomePage />} />
-          <Route path="memorialtrees" element={<MemorialTreeMainPage />} />
-          <Route path="memorialtrees/search" element={<MemorialTreeSearchPage />} />
+          <Route path="memorialtrees" element={<MemorialTreeSearchPage />} />
+          
           <Route path="contact" element={<ContactPage />} />
 
           <Route path="stories" element={<StoriesMainPage />} />

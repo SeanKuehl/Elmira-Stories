@@ -170,7 +170,12 @@ function MemorialTreeSearchPage() {
   return (
     <div>
       <h2> Memorial Tree Search </h2>
-      <p className="CenteredPText">If you would like to search for a memorial tree outside of Elmira, please visit <a href="http://www.lfcmemorialforest.org/">here</a>.
+      <p  className="LeftPText"> The Elmira memorial forest is a collection of dedicated trees and benches that run
+         along part of the Kissing Bridge Trailway. Both the Elmira part of the trail and the memorial forest
+        are maintained by the <a href="https://elmiralions.ca/">Elmira Lions Club</a>. 
+        The Elmira part of the trail also features a polinator preserve, resting places and
+        runs alongside the Elmira golf course. To dedicate a tree or bench, please visit <a href="https://elmiralions.ca/elmira-memorial-forest/">here</a>.
+        To search for memorial trees outside of Elmira, visit <a href="http://www.lfcmemorialforest.org/">here</a>.
         The previous link has lots of information on memorial trees and some from Elmira.
         This link, however, only has 14 entries for memorial trees in Elmira as of October 2024
         when in fact there are hundreds. This is the reason for this project. We are working to
