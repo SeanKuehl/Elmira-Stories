@@ -3,7 +3,7 @@
 
 
 
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import bandStandImage from '../Stories/StoriesAssets/GoreParkBandStand.jpg'
 import './PageStyles/StoriesPage.css'
 import './PageStyles/GeneralPageStyle.css'
@@ -26,7 +26,7 @@ function StoriesPage() {
             <div>
             <Link to="/stories/bandstand" className="StoryLink">The Amazing Gore Park Bandstand</Link>
             <br></br>
-            <Link to="/stories/bandstand" className="StoryLink"><img src={bandStandImage} width="200vw" height="200vh"/></Link>
+            <Link to="/stories/bandstand" className="StoryLink"><img src={bandStandImage} width="200vw" height="200vh" alt="The Elmira Gore Park Bandstand" /></Link>
             <br></br>
             <br></br>
             <br></br>

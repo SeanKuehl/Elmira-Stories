@@ -24,7 +24,7 @@ function MemorialTreeSearchPage() {
     "Dedicated To": "This is the person or persons the tree or bench has been planted or placed to remember.",
     "Dedicated By": "This is the person or persons who commissioned the tree or bench to be planted or placed.",
     "Date Added": "This is the date the memorial was added to the catelogue. This is not when the memorial was first placed or planted.",
-    "Approximate Location": "This is the longitude and lattitude that the memorial is located near. If you wish to visit the memorial in person, this will give you a good place to start looking.",
+    "Approximate Location": "This is the start and end Geohashes of the area where the tree is located. You can search the locations of the hashes here: https://www.geohash.es/decode",
     "Side of Trail": "This is the side of the trail the memorial is located on. The Left/Right orientation assumes that Downtown Elmira is on your left. Can be other than Left/Right if there are special circumstances surrouding the memorial's location.",
     "Additional Description": "If there is something special or notable about the memorial, it will be mentioned here. For example, a short biography of the person the memorial is dedicated to.",
     "Memorial Image": "This button will take you to the most recent picture taken of the memorial."
@@ -147,20 +147,24 @@ function MemorialTreeSearchPage() {
     useEffect(() => {
       //this triggers whenever there's a render event. setState calls trigger render events
 
-        if (realSliceSize === 0 && treeList.length != 0){
+        function CheckTreeListPageSize(){
+          if (realSliceSize === 0 && treeList.length !== 0){
 
-          if ((pagedListStartIndex + pagedListSliceSize) > treeList.length){
-            setRealSliceSize(treeList.length);
-            setDisplayStartIndex(1);
-          }
-          else {
-            setRealSliceSize(pagedListSliceSize);
-            setDisplayStartIndex(1);
-          }
+            if ((pagedListStartIndex + pagedListSliceSize) > treeList.length){
+              setRealSliceSize(treeList.length);
+              setDisplayStartIndex(1);
+            }
+            else {
+              setRealSliceSize(pagedListSliceSize);
+              setDisplayStartIndex(1);
+            }
 
-          
-          
+            
+            
+          }
         }
+        CheckTreeListPageSize();
+          
         
         
         
@@ -182,7 +186,8 @@ function MemorialTreeSearchPage() {
         This link, however, only has 14 entries for memorial trees in Elmira as of October 2024
         when in fact there are hundreds. This is the reason for this project. We are working to
         document all the memorial trees and benches in Elmira to preserve their stories and legacies.
-        You can search the trees we have added so far by searching below.
+        You can search the trees we have added so far by searching below. To search a memorial's Geohash location,
+        (they usually look something like "dpy8nf2t") please see <a href="https://www.geohash.es/decode">here.</a>
       </p>
 
       <br></br>
@@ -257,7 +262,7 @@ function MemorialTreeSearchPage() {
                 </thead>
                 <tbody>
                 {treeList.slice(pagedListStartIndex, realSliceSize).map(x => (
-                  <tr>
+                  <tr key={x.memorial_ID}>
                     <td>{x.memorial_ID}</td>
                     <td>{x.dedicated_to}</td>
                     <td>{x.dedicated_by}</td>
