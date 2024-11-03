@@ -18,12 +18,14 @@ function MemorialTreeSearchPage() {
 
   
 
+  
+
   const helpMessageDict = {"Memorial ID": "This is the unique number given to each tree or bench to help keep them organized. This has to do with cataloging them and they are not found on the memorials themselves.",
     "Dedicated To": "This is the person or persons the tree or bench has been planted or placed to remember.",
     "Dedicated By": "This is the person or persons who commissioned the tree or bench to be planted or placed.",
     "Date Added": "This is the date the memorial was added to the catelogue. This is not when the memorial was first placed or planted.",
     "Approximate Location": "This is the longitude and lattitude that the memorial is located near. If you wish to visit the memorial in person, this will give you a good place to start looking.",
-    "Side of Trail": "This is the side of the trail the memorial is located on. This is usually either 'Right' or 'Left', but may be different if there are special circumstances surrouding the memorial's location.",
+    "Side of Trail": "This is the side of the trail the memorial is located on. The Left/Right orientation assumes that Downtown Elmira is on your left. Can be other than Left/Right if there are special circumstances surrouding the memorial's location.",
     "Additional Description": "If there is something special or notable about the memorial, it will be mentioned here. For example, a short biography of the person the memorial is dedicated to.",
     "Memorial Image": "This button will take you to the most recent picture taken of the memorial."
   }
@@ -196,10 +198,38 @@ function MemorialTreeSearchPage() {
 
 
       
+      <div className="MobileHelpButtonDiv">
+        
+      <button className="MobileHelpButton" onTouchStart={() => {helpButtonMouseEnter("Memorial ID")}}
+                          onTouchEnd={() => {helpButtonMouseLeave()}}>What is Memorial ID?</button>
+      
+      <button className="MobileHelpButton" onTouchStart={() => {helpButtonMouseEnter("Dedicated To")}}
+                          onTouchEnd={() => {helpButtonMouseLeave()}}>What is Dedicated To?</button>
+
+      <button className="MobileHelpButton" onTouchStart={() => {helpButtonMouseEnter("Dedicated By")}}
+                          onTouchEnd={() => {helpButtonMouseLeave()}}>What is Dedicated By?</button>
+
+      <button className="MobileHelpButton" onTouchStart={() => {helpButtonMouseEnter("Date Added")}}
+                          onTouchEnd={() => {helpButtonMouseLeave()}}>What is Date Added?</button>
+
+      <button className="MobileHelpButton" onTouchStart={() => {helpButtonMouseEnter("Approximate Location")}}
+                          onTouchEnd={() => {helpButtonMouseLeave()}}>What is Approximate Location?</button>
+
+      <button className="MobileHelpButton" onTouchStart={() => {helpButtonMouseEnter("Side of Trail")}}
+                          onTouchEnd={() => {helpButtonMouseLeave()}}>What is Side of Trail?</button>
+
+      <button className="MobileHelpButton" onTouchStart={() => {helpButtonMouseEnter("Additional Description")}}
+                          onTouchEnd={() => {helpButtonMouseLeave()}}>What is Additional Description?</button>
+
+      <button className="MobileHelpButton" onTouchStart={() => {helpButtonMouseEnter("Memorial Image")}}
+                          onTouchEnd={() => {helpButtonMouseLeave()}}>What is Memorial Image?</button>
+      </div>
+
 
       <table>
                 <thead>
                   <tr>
+
                     <th>Memorial ID <button className="HelpButton" onMouseEnter={() => {helpButtonMouseEnter("Memorial ID")}}
                           onMouseLeave={() => {helpButtonMouseLeave()}}>?</button></th>
 

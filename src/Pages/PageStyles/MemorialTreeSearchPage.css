@@ -30,7 +30,8 @@
 
 
 .HelpDiv {
-  height: 15vh;
+  height: 20vh;
+  
   
 }
 
@@ -97,9 +98,39 @@ tr:nth-child(even) {
   justify-content: center;
 }
 
+.MobileHelpButtonDiv {
+  display: none;
+}
+
 
 /* 730px is the manually determined screen width at which the table becomes unwieldly */
 @media only screen and (max-width: 730px) {
+
+
+  .HelpDiv {
+    height: 25vh;
+    
+    
+  }
+
+  .MobileHelpButtonDiv {
+    
+    display: grid;
+    grid-template-columns: 3vw 3vw 3vw 3vw;
+    column-gap: 20vw;
+  }
+
+  .MobileHelpButton {
+    /* these will mean they can't select the text. This prevents the mobile copy/paste/text selection and options
+    from poping up and distracting from the help message */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    width: 23vw;
+    height: 10vh;
+    color: white;
+    background-color: darkblue;
+  }
 
   table, thead, tbody, th, td, tr { 
 		display: block; 
