@@ -16,8 +16,9 @@ function MemorialTreeSearchPage() {
   const [displayStartIndex, setDisplayStartIndex] = useState(0);
   const pagedListSliceSize = 10;
 
-  
+  const [firstLoad, setFirstLoad] = useState(true);
 
+  
   
 
   const helpMessageDict = {"Memorial ID": "This is the unique number given to each tree or bench to help keep them organized. This has to do with cataloging them and they are not found on the memorials themselves.",
@@ -96,6 +97,9 @@ function MemorialTreeSearchPage() {
   }
 
 
+  
+
+
   const fetchImage = async (imageFileName) => {
 
     
@@ -111,6 +115,44 @@ function MemorialTreeSearchPage() {
     window.open(body);
     
   };
+
+
+  const handleOnKeyUp = async (e) => {
+    e.preventDefault();
+
+    //if the user pressed the enter key while having the search bar in focus, we should search for the term
+    //this is a very commmon shortcut that we need to support
+    if (e.key == "Enter"){
+      let localSearchTerm = searchTerm;
+
+      //check for the search term being empty, as a truly empty string "" will cause a problem on the backend
+      
+      if (localSearchTerm.length === 0){
+        localSearchTerm = "Dan Kuso The GOAT";  //this is the 'super secret' key for the backend to return all results
+      }
+      
+      
+      let result = await fetch(
+        //note: the {} is javascript tells it to interperet something as javascript and not string.
+        //if used here, it works as intended. If used above, it creates problems
+      'http://localhost:5000/get_memorial_by_search_term/'+localSearchTerm, {
+          method: "get",
+          
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+      result = await result.json();
+      
+      if (result) {
+          
+          setTreeList(result);
+          
+          
+      }
+      
+    }
+  }
 
 
   const handleOnSubmit = async (e) => {
@@ -142,29 +184,60 @@ function MemorialTreeSearchPage() {
         
         
     }
+    
 }
 
     useEffect(() => {
       //this triggers whenever there's a render event. setState calls trigger render events
-
-        function CheckTreeListPageSize(){
-          if (realSliceSize === 0 && treeList.length !== 0){
-
-            if ((pagedListStartIndex + pagedListSliceSize) > treeList.length){
-              setRealSliceSize(treeList.length);
-              setDisplayStartIndex(1);
-            }
-            else {
-              setRealSliceSize(pagedListSliceSize);
-              setDisplayStartIndex(1);
-            }
-
-            
-            
+      function CheckTreeListPageSize(){
+        if (realSliceSize === 0 && treeList.length !== 0){
+    
+          if ((pagedListStartIndex + pagedListSliceSize) > treeList.length){
+            console.log("it detected it");
+            setRealSliceSize(treeList.length);
+            setDisplayStartIndex(1);
           }
-        }
-        CheckTreeListPageSize();
+          else {
+            console.log("it did not");
+            setRealSliceSize(pagedListSliceSize);
+            setDisplayStartIndex(1);
+          }
+    
           
+          
+        }
+      }
+        
+        CheckTreeListPageSize();
+
+        //when the user loads the page, there's nothing in the table. This loads the table when the page loads to fix that.
+       async function InitialFillOfTreeList(){
+        if (treeList.length === 0 && firstLoad){
+          setFirstLoad(false);
+          let result = await fetch(
+            //note: the {} is javascript tells it to interperet something as javascript and not string.
+            //if used here, it works as intended. If used above, it creates problems
+          'http://localhost:5000/get_memorial_by_search_term/Dan Kuso The GOAT', {
+              method: "get",
+              
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          })
+          result = await result.json();
+          
+          if (result) {
+              
+              setTreeList(result);
+              
+              
+          }
+       }
+        
+        }
+
+        InitialFillOfTreeList();
+        
         
         
         
@@ -187,12 +260,13 @@ function MemorialTreeSearchPage() {
         when in fact there are hundreds. This is the reason for this project. We are working to
         document all the memorial trees and benches in Elmira to preserve their stories and legacies.
         You can search the trees we have added so far by searching below. To search a memorial's Geohash location,
-        (they usually look something like "dpy8nf2t") please see <a href="https://www.geohash.es/decode">here.</a>
+        (they usually look something like "dpy8nf2t") please see <a href="https://www.geohash.es/decode">here</a>. 
+        If the memorial tree you're looking for isn't in our catalog yet, please contact the <a href="https://elmiralions.ca/contact/">Elmira Lions Club</a>.
       </p>
 
       <br></br>
 
-      <input type="text" placeholder="Search Here" value={searchTerm} className="SearchBox" onChange={(e) => setSearchTerm(e.target.value)}></input>
+      <input type="text" placeholder="Search Here" value={searchTerm} className="SearchBox" onChange={(e) => setSearchTerm(e.target.value)} onKeyUp={handleOnKeyUp}></input>
       <input type="submit" value="Search Memorials" onClick={handleOnSubmit} className="SearchButton"></input>
 
 
