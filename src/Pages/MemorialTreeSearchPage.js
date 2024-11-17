@@ -103,7 +103,7 @@ function MemorialTreeSearchPage() {
   const fetchImage = async (imageFileName) => {
 
     
-    const res = await fetch('https://elmira-stories-backend.railway.internal:5000/get_memorial_image/'+imageFileName, {  
+    const res = await fetch('https://elmira-stories-backend-production.up.railway.app:5000/get_memorial_image/'+imageFileName, {  
       method: "get",
         
         headers: {
@@ -135,7 +135,7 @@ function MemorialTreeSearchPage() {
       let result = await fetch(
         //note: the {} is javascript tells it to interperet something as javascript and not string.
         //if used here, it works as intended. If used above, it creates problems
-      'https://elmira-stories-backend.railway.internal:5000/get_memorial_by_search_term/'+localSearchTerm, {
+      'https://elmira-stories-backend-production.up.railway.app:5000/get_memorial_by_search_term/'+localSearchTerm, {
           method: "get",
           
           headers: {
@@ -169,7 +169,7 @@ function MemorialTreeSearchPage() {
     let result = await fetch(
       //note: the {} is javascript tells it to interperet something as javascript and not string.
       //if used here, it works as intended. If used above, it creates problems
-    'https://elmira-stories-backend.railway.internal:5000/get_memorial_by_search_term/'+localSearchTerm, {
+    'https://elmira-stories-backend-production.up.railway.app:5000/get_memorial_by_search_term/'+localSearchTerm, {
         method: "get",
         
         headers: {
@@ -217,7 +217,7 @@ function MemorialTreeSearchPage() {
           let result = await fetch(
             //note: the {} is javascript tells it to interperet something as javascript and not string.
             //if used here, it works as intended. If used above, it creates problems
-          'https://elmira-stories-backend.railway.internal:5000/get_memorial_by_search_term/Dan Kuso The GOAT', {
+          'https://elmira-stories-backend-production.up.railway.app:5000/get_memorial_by_search_term/Dan Kuso The GOAT', {
               method: "get",
               
               headers: {
@@ -225,7 +225,7 @@ function MemorialTreeSearchPage() {
               }
           })
           result = await result.json();
-          
+          console.log(result);
           if (result) {
               
               setTreeList(result);
