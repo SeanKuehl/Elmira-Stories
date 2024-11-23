@@ -103,16 +103,19 @@ function MemorialTreeSearchPage() {
   const fetchImage = async (imageFileName) => {
     
     
-    const res = await fetch('https://elmira-stories-production.up.railway.app/api/get_memorial_image/'+imageFileName, {  
+    const res = await fetch(process.env.REACT_APP_API_PATH+'/get_memorial_image/'+imageFileName, {  
       method: "get",
         
         headers: {
             'Content-Type': 'application/json'
         }
-    });
-    
+    }
+  );
     var body = await res.text();
-    window.open(body);
+
+    window.location.assign(body); //I'm using this instead of window.open because this methods isn't blocked by safari
+    //if time allows, I'll get a library to check for browser to use .assign sometimes and .open others
+    
     
   };
 
@@ -135,7 +138,7 @@ function MemorialTreeSearchPage() {
       let result = await fetch(
         //note: the {} is javascript tells it to interperet something as javascript and not string.
         //if used here, it works as intended. If used above, it creates problems
-      'https://elmira-stories-production.up.railway.app/api/get_memorial_by_search_term/'+localSearchTerm, {
+      process.env.REACT_APP_API_PATH+'/get_memorial_by_search_term/'+localSearchTerm, {
           method: "get",
           
           headers: {
@@ -169,7 +172,7 @@ function MemorialTreeSearchPage() {
     let result = await fetch(
       //note: the {} is javascript tells it to interperet something as javascript and not string.
       //if used here, it works as intended. If used above, it creates problems
-    'https://elmira-stories-production.up.railway.app/api/get_memorial_by_search_term/'+localSearchTerm, {
+    process.env.REACT_APP_API_PATH+'/get_memorial_by_search_term/'+localSearchTerm, {
         method: "get",
         
         headers: {
@@ -193,12 +196,12 @@ function MemorialTreeSearchPage() {
         if (realSliceSize === 0 && treeList.length !== 0){
     
           if ((pagedListStartIndex + pagedListSliceSize) > treeList.length){
-            console.log("it detected it");
+            
             setRealSliceSize(treeList.length);
             setDisplayStartIndex(1);
           }
           else {
-            console.log("it did not");
+            
             setRealSliceSize(pagedListSliceSize);
             setDisplayStartIndex(1);
           }
@@ -217,7 +220,7 @@ function MemorialTreeSearchPage() {
           let result = await fetch(
             //note: the {} is javascript tells it to interperet something as javascript and not string.
             //if used here, it works as intended. If used above, it creates problems
-          'https://elmira-stories-production.up.railway.app/api/get_memorial_by_search_term/Dan Kuso The GOAT', {
+          process.env.REACT_APP_API_PATH+'/get_memorial_by_search_term/Dan Kuso The GOAT', {
               method: "get",
               
               headers: {
@@ -225,7 +228,8 @@ function MemorialTreeSearchPage() {
               }
           })
           result = await result.json();
-          console.log(result);
+          
+          
           if (result) {
               
               setTreeList(result);
