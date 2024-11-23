@@ -340,8 +340,8 @@ function MemorialTreeSearchPage() {
                 </thead>
                 <tbody>
                 {treeList.slice(pagedListStartIndex, realSliceSize).map(x => (
-                  <tr key={x.memorial_ID}>
-                    <td>{x.memorial_ID}</td>
+                  <tr key={x.memorial_id}>
+                    <td>{x.memorial_id}</td>
                     <td>{x.dedicated_to}</td>
                     <td>{x.dedicated_by}</td>
                     <td>{dateFormatter(x.date_added)}</td>
