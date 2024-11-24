@@ -90,9 +90,9 @@ function MemorialTreeSearchPage() {
 
 
   function dateFormatter(inputDateString){
-    var justYearMonthDay = inputDateString.split('T')[0];
-    var withSlashesInsteadOfDashes = justYearMonthDay.replaceAll('-', '/');
-    return withSlashesInsteadOfDashes;
+    //this used to need some formatting/conversion, but in production I put the date in manually so this isn't needed
+    //consider this depracated. I'll remove it soon!
+    return inputDateString;
 
   }
 
