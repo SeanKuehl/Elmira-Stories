@@ -89,17 +89,6 @@ function MemorialTreeSearchPage() {
   }
 
 
-  function dateFormatter(inputDateString){
-    //this used to need some formatting/conversion, but in production I put the date in manually so this isn't needed
-    //consider this depracated. I'll remove it soon!
-    return inputDateString;
-
-  }
-
-
-  
-
-
   const fetchImage = async (imageFileName) => {
     
     
@@ -125,7 +114,7 @@ function MemorialTreeSearchPage() {
 
     //if the user pressed the enter key while having the search bar in focus, we should search for the term
     //this is a very commmon shortcut that we need to support
-    if (e.key == "Enter"){
+    if (e.key === "Enter"){
       let localSearchTerm = searchTerm;
 
       //check for the search term being empty, as a truly empty string "" will cause a problem on the backend
@@ -344,7 +333,7 @@ function MemorialTreeSearchPage() {
                     <td>{x.memorial_id}</td>
                     <td>{x.dedicated_to}</td>
                     <td>{x.dedicated_by}</td>
-                    <td>{dateFormatter(x.date_added)}</td>
+                    <td>{x.date_added}</td>
                     <td>{x.approximate_location}</td>
                     <td>{x.side_of_trail}</td>
                     <td>{x.additional_description}</td>

@@ -173,7 +173,7 @@ tr:nth-child(even) {
 	td:nth-of-type(4):before { content: "Date Added"; }
 	td:nth-of-type(5):before { content: "Approximate Location"; }
 	td:nth-of-type(6):before { content: "Side of Trail"; }
-	td:nth-of-type(7):before { content: "Additional Description"; }
+	td:nth-of-type(7):before { content: "Notes"; }
 	td:nth-of-type(8):before { content: "Memorial Image"; }
 
   
