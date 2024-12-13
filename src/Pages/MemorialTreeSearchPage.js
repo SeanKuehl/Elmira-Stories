@@ -1,6 +1,7 @@
 
 
 import { useState, useEffect } from 'react'
+import { browserName } from 'react-device-detect'
 import './PageStyles/MemorialTreeSearchPage.css'
 import './PageStyles/GeneralPageStyle.css'
 
@@ -88,8 +89,13 @@ function MemorialTreeSearchPage() {
     
   }
 
+  
+
+ 
+
 
   const fetchImage = async (imageFileName) => {
+    
     
     
     const res = await fetch(process.env.REACT_APP_API_PATH+'/get_memorial_image/'+imageFileName, {  
@@ -102,9 +108,18 @@ function MemorialTreeSearchPage() {
   );
     var body = await res.text();
 
-    window.location.assign(body); //I'm using this instead of window.open because this methods isn't blocked by safari
-    //if time allows, I'll get a library to check for browser to use .assign sometimes and .open others
     
+
+    if (browserName === "Mobile Safari" || browserName === "Safari"){
+      window.location.assign(body); //this works in safari while the below method doesn't
+    }
+    else {
+      window.open(body, '_blank');  //this open the url in a new window or tab depending on the user preference which is better because it doesn't lose the current page
+    }
+
+    
+    
+      
     
   };
 
@@ -145,6 +160,8 @@ function MemorialTreeSearchPage() {
       
     }
   }
+
+
 
 
   const handleOnSubmit = async (e) => {
@@ -206,9 +223,11 @@ function MemorialTreeSearchPage() {
        async function InitialFillOfTreeList(){
         if (treeList.length === 0 && firstLoad){
           setFirstLoad(false);
+          
           let result = await fetch(
             //note: the {} is javascript tells it to interperet something as javascript and not string.
             //if used here, it works as intended. If used above, it creates problems
+            
           process.env.REACT_APP_API_PATH+'/get_memorial_by_search_term/Dan Kuso The GOAT', {
               method: "get",
               
@@ -220,6 +239,7 @@ function MemorialTreeSearchPage() {
           
           
           if (result) {
+              
               
               setTreeList(result);
               
@@ -328,18 +348,26 @@ function MemorialTreeSearchPage() {
                   </tr>
                 </thead>
                 <tbody>
-                {treeList.slice(pagedListStartIndex, realSliceSize).map(x => (
-                  <tr key={x.memorial_id}>
-                    <td>{x.memorial_id}</td>
-                    <td>{x.dedicated_to}</td>
-                    <td>{x.dedicated_by}</td>
-                    <td>{x.date_added}</td>
-                    <td>{x.approximate_location}</td>
-                    <td>{x.side_of_trail}</td>
-                    <td>{x.additional_description}</td>
-                    <td><button onClick={() => {fetchImage(x.memorial_image)}} className="ViewImageButton">View Image</button></td>
-                  </tr>
-              ))}
+
+                
+                {
+                  treeList.slice(pagedListStartIndex, realSliceSize).map(x => (
+                    <tr key={x.memorial_id}>
+                      <td>{x.memorial_id}</td>
+                      <td>{x.dedicated_to}</td>
+                      <td>{x.dedicated_by}</td>
+                      <td>{x.date_added}</td>
+                      <td>{x.approximate_location}</td>
+                      <td>{x.side_of_trail}</td>
+                      <td>{x.additional_description}</td>
+                      <td><button onClick={() => {fetchImage(x.memorial_image)}} className="ViewImageButton">View Image</button></td>
+                      
+                    </tr>
+                  )
+                )
+              }
+                
+               
                 </tbody>
               </table>
 
