@@ -89,7 +89,31 @@ function MemorialTreeSearchPage() {
     
   }
 
-  
+
+
+
+
+  function getLinkFromApproximateLocationGeohash(stringWithGeohashes, startOrFinishLocation) {
+    //the start and end location geohashes are a string in the format: "dpy8nf2t - dpy8nf2q"
+
+    var geohashToReturn = 0;
+
+    geohashToReturn = stringWithGeohashes.replace(/ /g, '');  //this removes the whitespace from the string
+    geohashToReturn = geohashToReturn.split('-');
+
+    if (startOrFinishLocation === "Start") {
+      
+      geohashToReturn = geohashToReturn[0];
+
+    }
+    else if (startOrFinishLocation === "Finish") {
+      geohashToReturn = geohashToReturn[1];
+    }
+
+    var linkToReturn = "https://www.geohash.es/decode?geohash=" + geohashToReturn; //add the geohash into the link and return the link
+    return linkToReturn;
+
+  }
 
  
 
@@ -357,7 +381,7 @@ function MemorialTreeSearchPage() {
                       <td>{x.dedicated_to}</td>
                       <td>{x.dedicated_by}</td>
                       <td>{x.date_added}</td>
-                      <td>{x.approximate_location}</td>
+                      <td><a href={getLinkFromApproximateLocationGeohash(x.approximate_location, "Start")} target="_blank" rel="noopener noreferrer">Here</a> To <a href={getLinkFromApproximateLocationGeohash(x.approximate_location, "Finish")} target="_blank" rel="noopener noreferrer">Here</a></td> 
                       <td>{x.side_of_trail}</td>
                       <td>{x.additional_description}</td>
                       <td><button onClick={() => {fetchImage(x.memorial_image)}} className="ViewImageButton">View Image</button></td>
