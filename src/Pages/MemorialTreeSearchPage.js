@@ -27,7 +27,7 @@ function MemorialTreeSearchPage() {
     "Dedicated By": "This is the person or persons who commissioned the tree or bench to be planted or placed.",
     "Date Added": "This is the date the memorial was added to the catelogue. This is not when the memorial was first placed or planted.",
     "Approximate Location": "This is the start and end Geohashes of the area where the tree is located. You can search the locations of the hashes here: https://www.geohash.es/decode",
-    "Side of Trail": "This is the side of the trail the memorial is located on. The Left/Right orientation assumes that Downtown Elmira is on your left. Can be other than Left/Right if there are special circumstances surrouding the memorial's location.",
+    "Side of Trail": "This is the side of the trail the memorial is located on. The North/South orientation is with Downtown Elmira to the South and Elmira Pet Foods, Floradale and Fergus to the North.",
     "Additional Description": "If there is something special or notable about the memorial, it will be mentioned here. For example, a short biography of the person the memorial is dedicated to.",
     "Memorial Image": "This button will take you to the most recent picture taken of the memorial."
   }
