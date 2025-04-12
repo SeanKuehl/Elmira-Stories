@@ -8,7 +8,7 @@ import './PageStyles/GeneralPageStyle.css'
 import Footer from '../Components/Footer'
 
 
-function MemorialTreeSearchPage() {
+function SeperateMemorialTreeSearchPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [treeList, setTreeList] = useState([]);
 
