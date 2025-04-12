@@ -7,6 +7,10 @@ import './index.css';
 import HomePage from './Pages/HomePage'
 
 import MemorialTreeSearchPage from './Pages/MemorialTreeSearchPage';
+
+//this one is without the header for use on the Elmira Lions website
+import SeperateMemorialTreeSearchPage from './Pages/SeperateMemorialTreeSearchPage';
+
 import ContactPage from './Pages/ContactPage'
 import StoriesMainPage from './Pages/StoriesPage'
 
@@ -17,19 +21,14 @@ import CarlKlinckStory from './Stories/CarlKlinck'
 import UniversalPageHeader from './Components/UniversalHeader'
 
 
+
 //don't deploy with this!
 import AddMemorialTree from './Pages/AddMemorialTree'
 
 
 import reportWebVitals from './reportWebVitals';
 
-/*
-the additional paths add onto the base so '/blogs' etc
-the asterisk means it's a catch all, like a default case in a switch statement
-<Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} />
-*/
+
 
 
 
@@ -49,10 +48,14 @@ export default function App() {
           <Route path="stories/carlklinck" element={<CarlKlinckStory />} />
           
         </Route>
+          <Route path="/elmira-lions-memorial-tree-search" element={<SeperateMemorialTreeSearchPage />}>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
 }
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
