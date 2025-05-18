@@ -179,7 +179,9 @@ function SeperateMemorialTreeSearchPage() {
 
           //set the values back to the "first page"
           //this is because we want to show the start of the search results, not page x of them which might be blank
-          
+          setPagedListStartIndex(0);
+          setDisplayStartIndex(1);
+          setRealSliceSize(pagedListSliceSize);
           
           setTreeList(result);
           
@@ -216,7 +218,11 @@ function SeperateMemorialTreeSearchPage() {
     result = await result.json();
     
     if (result) {
-        
+        //set the values back to the "first page"
+        //this is because we want to show the start of the search results, not page x of them which might be blank
+        setPagedListStartIndex(0);
+        setDisplayStartIndex(1);
+        setRealSliceSize(pagedListSliceSize);
         setTreeList(result);
         
         
@@ -269,7 +275,11 @@ function SeperateMemorialTreeSearchPage() {
           
           if (result) {
               
-              
+              //set the values back to the "first page"
+              //this is because we want to show the start of the search results, not page x of them which might be blank
+              setPagedListStartIndex(0);
+              setDisplayStartIndex(1);
+              setRealSliceSize(pagedListSliceSize);
               setTreeList(result);
               
               
