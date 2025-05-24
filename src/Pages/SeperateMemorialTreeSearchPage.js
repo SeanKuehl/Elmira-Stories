@@ -22,7 +22,7 @@ function SeperateMemorialTreeSearchPage() {
   
   
 
-  const helpMessageDict = {"Memorial ID": "This is the unique number given to each tree or bench to help keep them organized. This has to do with cataloging them and they are not found on the memorials themselves.",
+  const helpMessageDict = {"Memorial ID": "This is the unique number given to each tree or bench to help keep them organized.",
     "Dedicated To": "This is the person or persons the tree or bench has been planted or placed to remember.",
     "Dedicated By": "This is the person or persons who commissioned the tree or bench to be planted or placed.",
     "Date Added": "This is the date the memorial was added to the catelogue. This is not when the memorial was first placed or planted.",
