@@ -62,6 +62,41 @@ function MemorialTreeSearchPage() {
     }
   }
 
+
+
+  function JumpToEndOfTreeList() {
+
+    if (treeList.length % pagedListSliceSize == 0) {
+      setPagedListStartIndex(treeList.length - pagedListSliceSize);
+      setDisplayStartIndex(treeList.length - pagedListSliceSize + 1);
+      setRealSliceSize(treeList.length);
+    }
+    else {
+      setPagedListStartIndex(treeList.length - (treeList.length % pagedListSliceSize));
+      setDisplayStartIndex(treeList.length - (treeList.length % pagedListSliceSize) + 1);
+      setRealSliceSize(treeList.length);
+    }
+    
+    
+  }
+
+
+  function JumpToBeginningOfTreeList() {
+
+    setPagedListStartIndex(0);
+    setDisplayStartIndex(1);
+
+    if (treeList.length <  pagedListSliceSize) {
+      
+      setRealSliceSize(treeList.length);
+    }
+    else {
+      setRealSliceSize(pagedListSliceSize);
+    }
+    
+    
+    
+  }
   
   
   
@@ -408,7 +443,9 @@ function MemorialTreeSearchPage() {
 
               <div className="ListPageDiv">
               
-              <p> <button className="PagedListButtons" onClick={() => {DecrementPagesListIndex()}}>&lt;</button> Showing {displayStartIndex} - {realSliceSize} of {treeList.length} memorial entries <button className="PagedListButtons" onClick={() => {IncrementPagesListIndex()}}>&gt;</button></p>
+              <p> <button className="PagedListButtons" onClick={() => {JumpToBeginningOfTreeList()}}>&lt;&lt;</button>
+              <button className="PagedListButtons" onClick={() => {DecrementPagesListIndex()}}>&lt;</button> Showing {displayStartIndex} - {realSliceSize} of {treeList.length} memorial entries <button className="PagedListButtons" onClick={() => {IncrementPagesListIndex()}}>&gt;</button>
+              <button className="PagedListButtons" onClick={() => {JumpToEndOfTreeList()}}>&gt;&gt;</button></p>
               
               </div>
 
