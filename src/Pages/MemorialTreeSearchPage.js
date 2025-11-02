@@ -26,9 +26,9 @@ function MemorialTreeSearchPage() {
     "Dedicated To": "This is the person or persons the tree or bench has been planted or placed to remember.",
     "Dedicated By": "This is the person or persons who commissioned the tree or bench to be planted or placed.",
     "Date Added": "This is the date the memorial was added to the catelogue. This is not when the memorial was first placed or planted.",
-    "Approximate Location": "This is the start and end Geohashes of the area where the tree is located. You can search the locations of the hashes here: https://www.geohash.es/decode",
+    "Approximate Location": "This is the start and end of the area where the tree is located.",
     "Side of Trail": "This is the side of the trail the memorial is located on. The North/South orientation is with Downtown Elmira to the South and Elmira Pet Foods, Floradale and Fergus to the North.",
-    "Additional Description": "If there is something special or notable about the memorial, it will be mentioned here. For example, a short biography of the person the memorial is dedicated to.",
+    "Additional Description": "If there is special notes on or about the memorial, it will be mentioned here. For example, a short biography of the person the memorial is dedicated to.",
     "Memorial Image": "This button will take you to the most recent picture taken of the memorial."
   }
 
@@ -334,17 +334,11 @@ function MemorialTreeSearchPage() {
       <h2> Memorial Tree Search </h2>
       <p  className="LeftPText"> The Elmira memorial forest is a collection of dedicated trees and benches that run
          along part of the Kissing Bridge Trailway. Both the Elmira part of the trail and the memorial forest
-        are maintained by the <a href="https://elmiralions.ca/">Elmira Lions Club</a>. 
-        The Elmira part of the trail also features a polinator preserve, resting places and
-        runs alongside the Elmira golf course. To dedicate a tree or bench, please visit <a href="https://elmiralions.ca/elmira-memorial-forest/">here</a>.
-        To search for memorial trees outside of Elmira, visit <a href="http://www.lfcmemorialforest.org/">here</a>.
-        The previous link has lots of information on memorial trees and some from Elmira.
-        This link, however, only has 14 entries for memorial trees in Elmira as of October 2024
-        when in fact there are hundreds. This is the reason for this project. We are working to
-        document all the memorial trees and benches in Elmira to preserve their stories and legacies.
-        You can search the trees we have added so far by searching below. To search a memorial's Geohash location,
-        (they usually look something like "dpy8nf2t") please see <a href="https://www.geohash.es/decode">here</a>. 
-        If the memorial tree you're looking for isn't in our catalog yet, please contact the <a href="https://elmiralions.ca/contact/">Elmira Lions Club</a>.
+        are maintained by the Elmira Lions Club. 
+        We are working to document all the memorial trees and benches in Elmira to preserve their stories and legacies.
+        You can search the trees we have added so far by searching below.
+        If the memorial tree you're looking for isn't in our catalog yet or you have trouble finding it, please contact 
+        the <a href="https://elmiralions.ca/contact/">Elmira Lions Club</a>.
       </p>
 
       <br></br>
