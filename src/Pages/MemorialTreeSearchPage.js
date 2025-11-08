@@ -163,7 +163,12 @@ function MemorialTreeSearchPage() {
     
 
     if (browserName === "Mobile Safari" || browserName === "Safari"){
-      window.location.assign(body); //this works in safari while the below method doesn't
+      //this gets around safari's security rule around no window.open inside of async
+      setTimeout(() => {
+        window.open(body, '_blank');
+      })
+      //window.location.assign(body, '_blank'); //this works in safari while the below method doesn't
+      //<a href={getLinkFromApproximateLocationGeohash(x.approximate_location)} target="_blank" rel="noopener noreferrer"
     }
     else {
       window.open(body, '_blank');  //this open the url in a new window or tab depending on the user preference which is better because it doesn't lose the current page

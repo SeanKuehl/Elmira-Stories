@@ -160,7 +160,10 @@ function SeperateMemorialTreeSearchPage() {
     
 
     if (browserName === "Mobile Safari" || browserName === "Safari"){
-      window.location.assign(body); //this works in safari while the below method doesn't
+      //this gets around safari's security rule around no window.open inside of async
+      setTimeout(() => {
+        window.open(body, '_blank');
+      })
     }
     else {
       window.open(body, '_blank');  //this open the url in a new window or tab depending on the user preference which is better because it doesn't lose the current page
