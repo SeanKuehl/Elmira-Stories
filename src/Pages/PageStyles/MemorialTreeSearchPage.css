@@ -128,7 +128,7 @@ tr:nth-child(even) {
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
     width: 23vw;
-    height: 10vh;
+    height: content;  /* the usuall vh approach doesn't work as the real thing is in an Iframe and it doesn't detect what it should */
     color: white;
     background-color: darkblue;
   }
