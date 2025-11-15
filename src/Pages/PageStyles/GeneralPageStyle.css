@@ -19,7 +19,14 @@ this class is for larger amounts of text that look better left centered
 }
 
 
-
+@media only screen and (max-width: 730px) {
+  .LeftPText {
+    margin: auto;
+    width: 100%;
+    font-size: 1.2em;
+    text-align: left;
+  }
+}
 
 
 
