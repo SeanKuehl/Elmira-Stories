@@ -1,7 +1,7 @@
 
 
 import { useState, useEffect } from 'react'
-import { browserName } from 'react-device-detect'
+import { browserName, isMobile } from 'react-device-detect'
 import './PageStyles/MemorialTreeSearchPage.css'
 import './PageStyles/GeneralPageStyle.css'
 
@@ -28,7 +28,7 @@ function SeperateMemorialTreeSearchPage() {
     "Date Added": "This is the date the memorial was added to the catelogue. This is not when the memorial was first placed or planted.",
     "Approximate Location": "This is the start and end of the area where the tree is located.",
     "Side of Trail": "This is the side of the trail the memorial is located on. The North/South orientation is with Downtown Elmira to the South and Elmira Pet Foods, Floradale and Fergus to the North.",
-    "Additional Description": "If there is special notes on or about the memorial, it will be mentioned here. For example, a short biography of the person the memorial is dedicated to.",
+    "Additional Description": "If there are special notes on or about the memorial, it will be mentioned here. For example, a short biography of the person the memorial is dedicated to.",
     "Memorial Image": "This button will take you to the most recent picture taken of the memorial."
   }
 
@@ -104,10 +104,18 @@ function SeperateMemorialTreeSearchPage() {
     
 
     
-    var helpMessage = helpMessageDict[buttonName];
+    //if it's a mobile device, the screen isn't large enough to fit the help div
+    //and tree search part on at once. So, let's make the help text alerts instead
 
-    helpTextDisplay.innerHTML = helpMessage;
-    helpTitleDisplay.innerHTML = buttonName;
+    if (isMobile) {
+      alert(buttonName + "\n" + helpMessageDict[buttonName]);
+    }
+    else {
+      var helpMessage = helpMessageDict[buttonName];
+
+      helpTextDisplay.innerHTML = helpMessage;
+      helpTitleDisplay.innerHTML = buttonName;
+    }
     
   }
 
